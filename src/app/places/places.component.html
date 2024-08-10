@@ -1,1 +1,45 @@
-<p>places works!</p>
+<div class="row p-3">
+    <div class="col-10">
+      <div class="input-group">
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Place's name" 
+          aria-label="Recipient's username" 
+          aria-describedby="button-addon2"
+          #placeNameSearchInput>
+        <button 
+          class="btn btn-outline-secondary" 
+          type="button" 
+          id="button-addon2"
+          (click) = "onSearch()">Search</button>
+      </div>
+    </div>
+    <div class="col-2">
+      <button 
+        type="button" 
+        class="btn btn-outline-secondary"
+        (click)="onClickAddPlace()">Add</button>
+    </div>
+  </div>
+
+  <div class="row p-5">
+
+    <!-- <ul class="list-group list-group-flush">
+      <li 
+        *ngFor="let place of places; index as i"
+        class="list-group-item"
+        (click) = "onClickPlace($event)"
+        [attr.data-code] = "place.code"
+      >{{ place.name }}</li>
+    </ul> -->
+
+<div 
+  class="card m-3" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">WASHROOM</h5>
+        <p class="card-text">UIY-087</p>
+        <a href="#" class="btn btn-primary">View</a>
+    </div>
+  </div>
+</div>
