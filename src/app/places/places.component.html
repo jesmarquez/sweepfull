@@ -34,12 +34,13 @@
       >{{ place.name }}</li>
     </ul> -->
 
-<div 
-  class="card m-3" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">WASHROOM</h5>
-        <p class="card-text">UIY-087</p>
-        <a href="#" class="btn btn-primary">View</a>
-    </div>
-  </div>
+    <div 
+      class="card m-3" style="width: 18rem;"
+        *ngFor="let place of places; index as i">
+        <div class="card-body">
+            <h5 class="card-title">{{ place.name}}</h5>
+            <p class="card-text">{{ place.code }}</p>
+            <a href="#" class="btn btn-primary">View</a>
+        </div>
+      </div>
 </div>
