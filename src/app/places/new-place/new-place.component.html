@@ -1,0 +1,50 @@
+<form class="row g-3 m-3 needs-validation novalidate" action="javascript:void(0);">
+  <div class="col-12">
+    <label for="validationCustom01" class="form-label">Name of place</label>
+    <input class="form-control form-control-lg"
+        id="validationCustom01"
+        type="text" 
+        placeholder="Enter a place" 
+        aria-label=".form-control-lg example"
+        #placeNameInput
+        required>
+    <div class="invalid-feedback">
+        Please enter a place name
+    </div>
+  </div>
+  <div class="col-12">
+    <label for="validationCustom02" class="form-label">Code</label>
+    <input
+      id="validationCustom02"
+      class="form-control form-control-lg"
+      type="text"
+      placeholder="Enter code"
+      #placeCodeInput
+      required>
+      <div class="invalid-feedback">
+          Please enter a code
+      </div>
+  </div>
+  <div class="col-12">
+    <label for="validationCustom02" class="form-label">Location</label>
+    <input 
+        type="text"
+        class="form-control form-control-lg"
+        placeholder="Enter location"
+        #placeLocationInput>
+        <div class="invalid-feedback">
+            Please enter a location
+        </div>
+  </div>
+  <div class="col-12">
+    <button type="submit"
+      class="btn btn-primary"
+      (click) = "onSubmitPlace()"
+      style="margin-left:5px;"
+      >Submit</button>        
+    <button type="button"
+      class="btn btn-secondary"
+      (click) = "onCancelPlace()"
+      style="margin-left:5px;">Cancel</button>
+    </div>
+</form>

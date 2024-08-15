@@ -23,6 +23,11 @@
     </div>
   </div>
 
+  <app-new-place  *ngIf="mode === 'edit'"
+  (placeSubmitted)="onPlaceSubmitted($event)"
+  (cancelSubmit) = "onCancelSubmit($event)"
+  ></app-new-place>
+
   <div class="row p-5">
 
     <!-- <ul class="list-group list-group-flush">
