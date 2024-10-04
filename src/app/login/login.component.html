@@ -1,0 +1,39 @@
+<div class="container text-center padre">
+  <div class="form-container  border">
+
+      <img src="https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/cleaning-gloves-protective-svgrepo-com.svg?alt=media&token=2e7c4bc0-2ae0-4529-8ed5-f9a0f9dbceae" 
+        alt="gloves clean"
+        width="70px"
+        height="70px">
+      
+      <form action=""
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm">
+        <div class="mb-3">
+          <label for="login-email" class="form-label">Username</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="login-email"
+            [(ngModel)]="form.username"
+            name="username"
+            #username="ngModel">
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="login-password"
+            [(ngModel)]="form.password"
+            name="password"
+            #password>
+        </div>
+        <button type="submit" class="btn btn-success">Sign In!</button>
+        <button type="button" class="btn">No account, signup!</button>
+      </form>
+
+  </div>
+
+</div>
