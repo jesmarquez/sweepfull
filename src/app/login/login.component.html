@@ -8,17 +8,23 @@
       
       <form action=""
         name="form"
-        (ngSubmit)="onSubmit()"
-        #f="ngForm">
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm" novalidate>
         <div class="mb-3">
           <label for="login-email" class="form-label">Username</label>
           <input 
             type="email" 
             class="form-control" 
             id="login-email"
-            [(ngModel)]="form.username"
             name="username"
-            #username="ngModel">
+            required
+            #username="ngModel"
+            [(ngModel)]="form.username"
+            [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+            />
+            @if (username.errors && f.submitted) {
+              <div class="invalid-feedback">Username is required!</div>
+            }
         </div>
         <div class="mb-3">
           <label for="login-password" class="form-label">Password</label>
@@ -26,9 +32,23 @@
             type="password" 
             class="form-control" 
             id="login-password"
-            [(ngModel)]="form.password"
             name="password"
-            #password>
+            #password="ngModel"
+            required
+            minlength="6"
+            [(ngModel)]="form.password"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+            />
+            @if (password.errors && f.submitted) {
+              <div class="invalid-feedback">
+                @if (password.errors['required']) {
+                  <div>Password is required!</div>
+                }
+                @if (password.errors['minlength']) {
+                  <div>Password must be at least 6 characters</div>
+                }
+              </div>
+            }
         </div>
         <button type="submit" class="btn btn-success">Sign In!</button>
         <button type="button" class="btn">No account, signup!</button>
