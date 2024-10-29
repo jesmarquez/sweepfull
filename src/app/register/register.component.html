@@ -1,0 +1,75 @@
+<div class="container text-center padre">
+  <div class="form-container  border">
+    <img src="https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/cleaning-gloves-protective-svgrepo-com.svg?alt=media&token=2e7c4bc0-2ae0-4529-8ed5-f9a0f9dbceae" 
+      alt="gloves clean"
+      width="70px"
+      height="70px">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="mb-3">
+        <label for="register-first-name" class="form-label">First name</label>
+        <input id="register-first-name" 
+          type="text" 
+          name="firstName"
+          class="form-control"
+          required 
+          ngModel
+          #firstName="ngModel"
+          />
+      </div>
+      <div class="mb-3">
+        <label for="register-last-name" class="form-label">Last name</label>
+        <input id="register-last-name" 
+          type="text" 
+          name="lastName"
+          class="form-control"
+          required 
+          ngModel
+          #lastName="ngModel"/>
+      </div>
+      <div class="mb-3">
+        <label for="register-email" class="form-label">Email</label>
+        <input id="register-email" 
+          type="text" 
+          name="email"
+          class="form-control"
+          required
+          email
+          ngModel
+          #email="ngModel"/>
+      </div>
+      <div class="mb-3">
+        <label for="register-password" class="form-label">Password</label>
+        <input id="register-password" 
+          type="password" 
+          name="password"
+          class="form-control"
+          required
+          minlenght ="6"
+          ngModel
+          #password="ngModel"/>
+      </div>
+      <div class="mb-3">
+        <label for="register-repassword" class="form-label">Retype password</label>
+        <input id="register-repassword" 
+          type="password" 
+          name="repassword"
+          class="form-control"
+          required
+          minlenght ="6"
+          ngModel
+          #repassword="ngModel"/>
+      </div>
+      <div class="mb-3">      
+        <button type="submit" class="btn btn-success">Sign up</button>
+        <button type="button" class="btn" (click)="onSignIn()">Sign in</button>
+      </div>
+      @if(firstName.touched && lastName.touched && email.touched && password.touched && repassword.touched && form.form.invalid) {
+        <p class="text-danger">
+          Invalid values detected. Please check your input.
+        </p>
+      }
+
+    </form>
+  </div>
+</div>
+

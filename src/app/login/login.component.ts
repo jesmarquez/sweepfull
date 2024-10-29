@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
   // @ViewChild('passwordInputLogin') 
   // passwordInputLoginRef! : ElementRef;
   
-  constructor(private storageService: StorageService) {
+  constructor(private storageService: StorageService, private router: Router) {
 
 
   }
@@ -53,5 +54,10 @@ export class LoginComponent {
 
     console.log({ username, password });
     console.log('onSubmit');
+  }
+
+  onSignup() {
+    this.router.navigate(['signup']);
+
   }
 }

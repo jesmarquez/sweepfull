@@ -15,4 +15,8 @@ export class HomeComponent {
   onSignin() {
     this.router.navigate(['/signin']);
   }
+
+  onSignUp() {
+    this.router.navigate(['signup']);
+  }
 }
