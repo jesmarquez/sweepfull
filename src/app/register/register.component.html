@@ -1,39 +1,55 @@
-<div class="container text-center padre">
-  <div class="form-container  border">
-    <img src="https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/cleaning-gloves-protective-svgrepo-com.svg?alt=media&token=2e7c4bc0-2ae0-4529-8ed5-f9a0f9dbceae" 
-      alt="gloves clean"
-      width="70px"
-      height="70px">
-    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-      <div class="mb-3">
+<div class="container padre">
+  <div class="form-container border">
+    <div class="text-center">
+      <img src="https://firebasestorage.googleapis.com/v0/b/lapapa-faabf.appspot.com/o/cleaning-gloves-protective-svgrepo-com.svg?alt=media&token=2e7c4bc0-2ae0-4529-8ed5-f9a0f9dbceae" 
+        alt="gloves clean"
+        width="70px"
+        height="70px">
+    </div>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="row needs-validation" novalidate>
+      <div class="mb-3 col-md-6">
         <label for="register-first-name" class="form-label">First name</label>
         <input id="register-first-name" 
           type="text" 
           name="firstName"
           class="form-control"
+          pattern="\w{3,16}"
           required 
+          [class.is-invalid]="firstName.invalid && firstName.dirty"
+          [class.is-valid]="firstName.valid"
           ngModel
           #firstName="ngModel"
           />
+          <div class="invalid-feedback">
+            Please enter a first name.
+          </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 col-md-6">
         <label for="register-last-name" class="form-label">Last name</label>
         <input id="register-last-name" 
           type="text" 
           name="lastName"
           class="form-control"
+          pattern="\w{3,16}"
+          [class.is-invalid]="lastName.invalid && lastName.dirty"
+          [class.is-valid]="lastName.valid"
           required 
           ngModel
           #lastName="ngModel"/>
+          <div class="invalid-feedback">
+            Please enter a last name.
+          </div>
       </div>
       <div class="mb-3">
         <label for="register-email" class="form-label">Email</label>
         <input id="register-email" 
-          type="text" 
+          type="email" 
           name="email"
           class="form-control"
           required
-          email
+          pattern="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}"
+          [class.is-invalid]="email.dirty && email.invalid"
+          [class.is-valid]="email.valid"
           ngModel
           #email="ngModel"/>
       </div>
