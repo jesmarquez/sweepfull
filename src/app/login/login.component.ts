@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { StorageService } from '../_services/storage.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,18 @@ export class LoginComponent {
   }
 
   isLoggedIn = false;
+  isLoginFailed = false;
+  roles: string[] = [];
+  errorMessage = '';
 
   // @ViewChild('usernameInputLogin')
   // usernameInputLoginRef!: ElementRef;
   // @ViewChild('passwordInputLogin') 
   // passwordInputLoginRef! : ElementRef;
   
-  constructor(private storageService: StorageService, private router: Router) {
+  constructor(private storageService: StorageService, 
+    private router: Router,
+    private authService: AuthService) {
 
 
   }
@@ -35,7 +41,7 @@ export class LoginComponent {
       this.isLoggedIn = true;
     }
 
-    console.log('ngOnInit trigger');
+    console.log(this.isLoggedIn ? 'user authenticated' : 'no user' );
 
   }
 
@@ -43,10 +49,26 @@ export class LoginComponent {
     // const username = this.usernameInputLoginRef.nativeElement.value;
     // const password = this.passwordInputLoginRef.nativeElement.value;
 
-    // console.log(username, password);
-    console.log('onLogin');
+    const { username, password } = this.form;
+    // console.log({ username, password });
+    
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        this.storageService.saveUser(data);
 
-
+        this.isLoggedIn = true;
+        this.isLoginFailed = false;
+        
+        this.router.navigate(['/dashboard']);
+        
+        console.log('user logged');
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    });
+    
   }
 
   onSubmit(): void {

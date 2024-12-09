@@ -76,7 +76,7 @@
           #repassword="ngModel"/>
       </div>
       <div class="mb-3">      
-        <button type="submit" class="btn btn-success">Sign up</button>
+        <button type="submit" class="btn btn-success" [disabled]="form.invalid">Sign up</button>
         <button type="button" class="btn" (click)="onSignIn()">Sign in</button>
       </div>
       @if(firstName.touched && lastName.touched && email.touched && password.touched && repassword.touched && form.form.invalid) {

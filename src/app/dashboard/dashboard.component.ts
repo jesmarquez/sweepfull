@@ -12,7 +12,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 })
 export class DashboardComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+
   }
 
 
