@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { StorageService } from "../_services/storage.service";
 
 
 @Component({
@@ -11,8 +12,14 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
   imports: [RouterOutlet, RouterLink, RouterLinkActive]
 })
 export class DashboardComponent implements OnInit {
-  ngOnInit(): void {
+  currentUser: any;
 
+  constructor (private storageService: StorageService) {
+
+  }
+  ngOnInit(): void {
+    this.currentUser = this.storageService.getUser();
+    console.log(this.currentUser);
   }
 
 

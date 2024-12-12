@@ -35,6 +35,6 @@ export class StorageService {
       return JSON.parse(user);
     }
 
-    return {};
+    return false;
   }
 }
