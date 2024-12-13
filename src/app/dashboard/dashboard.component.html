@@ -1,4 +1,9 @@
 @if(currentUser) {
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" (click)="onLogout()" href="javascript: void(0)">Logout</a>
+    </li>
+  </ul>
   <div class="row p-5" style="margin-top:70px;">
   <div class="card m-3" style="width: 18rem;">
     <div class="card-body">

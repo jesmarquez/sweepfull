@@ -50,7 +50,7 @@
               </div>
             }
         </div>
-        <button type="submit" class="btn btn-success" (click)="onLogin()">Sign In!</button>
+        <button type="submit" class="btn btn-success" (click)="onLogin()" [disabled]="f.form.invalid">Sign In!</button>
         <button type="button" class="btn" (click)="onSignup()">No account, signup!</button>
       </form>
 

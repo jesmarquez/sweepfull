@@ -1,7 +1,8 @@
 
 import { Component, OnInit } from "@angular/core";
-import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { StorageService } from "../_services/storage.service";
+import { AuthService } from '../_services/auth.service';
 
 
 @Component({
@@ -9,12 +10,14 @@ import { StorageService } from "../_services/storage.service";
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive]
+  imports: [RouterLink, RouterLinkActive]
 })
 export class DashboardComponent implements OnInit {
   currentUser: any;
 
-  constructor (private storageService: StorageService) {
+  constructor (private storageService: StorageService,
+                private authService: AuthService,
+                private router: Router) {
 
   }
   ngOnInit(): void {
@@ -22,5 +25,14 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser);
   }
 
+  onLogout() {
+    this.authService.logout().subscribe({
+      next: data => {
+        this.storageService.clean();
+        this.router.navigate(['/']);
+      }
+    })
+    console.log('logout');
+  }
 
 }
