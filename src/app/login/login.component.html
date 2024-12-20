@@ -50,6 +50,11 @@
               </div>
             }
         </div>
+        @if (isLoginFailed) {
+          <div class="alert alert-danger" role="alert">
+            Username and/or password are wrong!
+          </div>
+        }
         <button type="submit" class="btn btn-success" (click)="onLogin()" [disabled]="f.form.invalid">Sign In!</button>
         <button type="button" class="btn" (click)="onSignup()">No account, signup!</button>
       </form>

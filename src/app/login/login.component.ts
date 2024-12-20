@@ -64,6 +64,7 @@ export class LoginComponent {
         console.log('user logged');
       },
       error: err => {
+        console.log('err login');
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
