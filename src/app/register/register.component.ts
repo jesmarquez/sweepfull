@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { last } from 'rxjs';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,9 @@ import { last } from 'rxjs';
 })
 export class RegisterComponent {
   matchPasswords = false;
-  constructor(private router: Router) {
+  errorMessage = '';
+
+  constructor(private router: Router, private authService: AuthService) {
 
   }
   onSignIn() {
@@ -40,11 +43,22 @@ export class RegisterComponent {
       return;
     }
     
+    
     console.log(firstName, lastName, email, passwordFirstTime, passwordSecondTime);
 
+    this.authService.register(firstName, lastName, email, passwordFirstTime).subscribe({
+      next: data => {
+        console.log(data);
+
+      }, error: err => {
+        console.log(err);
+        this.errorMessage = err.error.message;
+        
+      }
+    })
     // this.router.navigate(['/dashboard']);
     
-    formSubmitted.form.reset();
+  //  formSubmitted.form.reset();
     
   }
 }
