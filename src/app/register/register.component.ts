@@ -31,6 +31,8 @@ export class RegisterComponent {
     const lastName = formSubmitted.form.value.lastName;
     const passwordFirstTime = formSubmitted.form.value.password;
     const passwordSecondTime = formSubmitted.form.value.repassword;
+    const email = formSubmitted.controls['email'].value;
+
 
     this.matchPasswords = (passwordFirstTime === passwordSecondTime) ? true : false;
 
@@ -38,11 +40,10 @@ export class RegisterComponent {
       return;
     }
     
-    this.router.navigate(['/dashboard']);
-    
+    console.log(firstName, lastName, email, passwordFirstTime, passwordSecondTime);
 
-    // console.log(formSubmitted.form);
-    // console.log(firstName, lastName);
+    // this.router.navigate(['/dashboard']);
+    
     formSubmitted.form.reset();
     
   }

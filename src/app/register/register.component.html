@@ -88,7 +88,7 @@
         </p>
       }
 
-      @if (!matchPasswords && password.touched && repassword.touched ) {
+      @if (!matchPasswords && password.touched && repassword.touched && form.submitted) {
         <p class="text-danger">
           Passwords don't match. Please check it!
         </p>
