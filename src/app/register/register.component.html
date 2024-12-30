@@ -53,6 +53,9 @@
           ngModel
           #email="ngModel"/>
       </div>
+      <div>
+        <p class="fw-lighter lh-1">Choose a strong password at least 6 characters combing numbers, uppercase and lowercase letters, and symbols.</p>
+      </div>
       <div class="mb-3">
         <label for="register-password" class="form-label">Password</label>
         <input id="register-password" 
@@ -82,6 +85,12 @@
       @if(firstName.touched && lastName.touched && email.touched && password.touched && repassword.touched && form.form.invalid) {
         <p class="text-danger">
           Invalid values detected. Please check your input.
+        </p>
+      }
+
+      @if (!matchPasswords && password.touched && repassword.touched ) {
+        <p class="text-danger">
+          Passwords don't match. Please check it!
         </p>
       }
 

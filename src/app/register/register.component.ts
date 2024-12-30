@@ -11,6 +11,7 @@ import { last } from 'rxjs';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  matchPasswords = false;
   constructor(private router: Router) {
 
   }
@@ -19,7 +20,7 @@ export class RegisterComponent {
   }
 
   onSubmit(formSubmitted: NgForm) {
-    console.log(formSubmitted);
+    // console.log(formSubmitted);
 
     if (formSubmitted.invalid) {
       console.log('it is invalid');
@@ -28,9 +29,21 @@ export class RegisterComponent {
 
     const firstName = formSubmitted.form.value.firstName;
     const lastName = formSubmitted.form.value.lastName;
+    const passwordFirstTime = formSubmitted.form.value.password;
+    const passwordSecondTime = formSubmitted.form.value.repassword;
 
-    console.log(formSubmitted.form);
-    console.log(firstName, lastName);
+    this.matchPasswords = (passwordFirstTime === passwordSecondTime) ? true : false;
 
+    if (!this.matchPasswords) {
+      return;
+    }
+    
+    this.router.navigate(['/dashboard']);
+    
+
+    // console.log(formSubmitted.form);
+    // console.log(firstName, lastName);
+    formSubmitted.form.reset();
+    
   }
 }
